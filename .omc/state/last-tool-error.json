@@ -1,0 +1,7 @@
+{
+  "tool_name": "Read",
+  "tool_input_preview": "{\"file_path\":\"\\\\mnt\\\\c\\\\Users\\\\mj010\\\\AndroidStudioProjects\\\\srf_connect_test\\\\app\\\\src\\\\main\\\\java\\\\com\\\\example\\\\srf_connect_test\\\\ble\\\\BleViewModel.kt\"}",
+  "error": "File does not exist. Note: your current working directory is C:\\Users\\mj010\\AndroidStudioProjects\\srf_connect_test.",
+  "timestamp": "2026-05-25T01:09:32.475Z",
+  "retry_count": 2
+}

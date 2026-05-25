@@ -1,0 +1,57 @@
+{
+  "title": "Simple GATT Client App",
+  "description": "Android BLE GATT client with 3 services: Temperature (read only), Battery Service (read/write/notify), User Data (read/write). Compose UI with service cards, feature badges, write TextFields, and notification log.",
+  "stories": [
+    {
+      "id": "US-001",
+      "title": "BLE Permissions & Dependencies",
+      "acceptanceCriteria": [
+        "AndroidManifest.xml declares BLUETOOTH, BLUETOOTH_ADMIN, ACCESS_FINE_LOCATION (pre-S), BLUETOOTH_SCAN, BLUETOOTH_CONNECT permissions",
+        "AndroidManifest.xml has android.hardware.bluetooth_le feature declaration",
+        "libs.versions.toml and build.gradle.kts include lifecycle-viewmodel-compose"
+      ],
+      "passes": true
+    },
+    {
+      "id": "US-002",
+      "title": "BLE Core Layer",
+      "acceptanceCriteria": [
+        "BleManager.kt exposes scanResults, connState, readValues, notifLogs, notifEnabled as MutableStateFlow",
+        "Handles both API 33+ and pre-33 deprecated GATT callbacks",
+        "BleVM wraps BleManager and exposes devices, isScanning StateFlows"
+      ],
+      "passes": true
+    },
+    {
+      "id": "US-003",
+      "title": "Scan Screen",
+      "acceptanceCriteria": [
+        "ScanScreen with Start/Stop Scan button and scanning indicator",
+        "Discovered devices in Card list with name and address",
+        "Tapping device calls vm.connect(); auto-shows DeviceScreen"
+      ],
+      "passes": true
+    },
+    {
+      "id": "US-004",
+      "title": "Device Screen with Service Cards",
+      "acceptanceCriteria": [
+        "DeviceScreen shows device name, Connected status, Disconnect button",
+        "Three ServiceCard items for Temperature, Battery Service, User Data",
+        "Temperature: READ badge only; Battery: READ+WRITE+NOTIFY; User Data: READ+WRITE"
+      ],
+      "passes": true
+    },
+    {
+      "id": "US-005",
+      "title": "Read & Write & Notify UX",
+      "acceptanceCriteria": [
+        "All 3 cards have Read button; value displayed after callback",
+        "Battery Service and User Data have OutlinedTextField + Send button; Temperature does not",
+        "Battery Service has Notifications Switch + timestamped log of last 5 entries",
+        "Build: assembleDebug SUCCESS with 0 errors, 0 warnings"
+      ],
+      "passes": true
+    }
+  ]
+}

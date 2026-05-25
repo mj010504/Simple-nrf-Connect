@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Recurse \"C:\\\\Users\\\\mj010\\\\AndroidStudioProjects\\\\srf_connect_test\\\\app\\\\src\\\\main\\\\java\" | Where-Object { -not $_.PSIsContainer } | Select-Object FullName)"
+    ]
+  }
+}
